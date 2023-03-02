@@ -12,8 +12,7 @@ const remove = async (req, res, next) => {
       res.json({
         status: "success",
         code: 200,
-        message: "product delete", 
-        data: {result}
+        message: "contact deleted"
       })
     } catch (error) {
       next(error)

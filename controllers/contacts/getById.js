@@ -9,7 +9,13 @@ const getById = async (req, res, next) => {
         error.status = 404;
         throw error;
       }
-      res.json(contact)
+      res.json({
+        status: "success",
+        code: 200,
+        data: {
+        result: contact,
+        }
+      })
     } catch (error) {
       next(error)
     }
