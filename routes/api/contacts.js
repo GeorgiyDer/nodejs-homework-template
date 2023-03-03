@@ -6,14 +6,14 @@ const {contacts: ctrl} = require("../../controllers");
 
 const validateMiddleware = validation(contactsSchema);
 
-router.get('/', ctrl.getAll)
+router.get('/', ctrl.listContacts)
 
 router.get('/:contactId', ctrl.getById)
 
-router.post('/', validateMiddleware,  ctrl.add)
+router.post('/', validateMiddleware,  ctrl.addContact)
 
-router.delete('/:contactId', ctrl.remove)
+router.delete('/:contactId', ctrl.removeContact)
 
-router.put('/:contactId', validateMiddleware, ctrl.update)
+router.put('/:contactId', validateMiddleware, ctrl.updateContact)
 
 module.exports = router
