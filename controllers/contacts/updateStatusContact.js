@@ -5,8 +5,8 @@ const updateStatusContact = async (req, res) => {
     const { body } = req;
     const result = await Contact.findByIdAndUpdate(contactId, body, {new: true});
     if(!result){
-      const error = new Error("missing field favorite")
-      error.status = 400;
+      const error = new Error("not found")
+      error.status = 404;
       throw error;
     }
     res.status(200).json(result);

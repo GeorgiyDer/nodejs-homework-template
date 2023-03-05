@@ -5,7 +5,7 @@ const isValidId = (req, res, next) => {
   const isValid = isValidObjectId(contactId);
   if (!isValid) {
     const error = new Error("Not found");
-    error.status = 404;
+    error.status = 400;
     next(error);
   }
   next();
