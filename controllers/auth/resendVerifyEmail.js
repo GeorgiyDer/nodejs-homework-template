@@ -3,7 +3,7 @@ const { sendEmail } = require("../../helpers/sendEmail")
 
 const resendVerifyEmail = async (req, res) => {
   const { email } = req.body;
-  const user = User.findOne({ email });
+  const user = await User.findOne({email})
   if (!user) {
     const error = new Error("User not found");
     error.status = 404;
@@ -11,8 +11,7 @@ const resendVerifyEmail = async (req, res) => {
   }
   if (user.verify) {
         const error = new Error(`Verification has already been passed`);
-        error.code = 400;
-        error.status = "Bad Request";
+        error.status = 400;
         throw error;
   }
   const mail = {
@@ -22,7 +21,7 @@ const resendVerifyEmail = async (req, res) => {
   };
 
   await sendEmail(mail);
-  
+
   res.json({
     message: "Verification email sent",
   });
